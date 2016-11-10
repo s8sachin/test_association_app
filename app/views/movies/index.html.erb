@@ -1,0 +1,31 @@
+<table border="solid">
+  <thead >
+    <tr>
+      <td> Title</td>
+      <td> Actor</td>
+      <td> Producer</td>
+      <td> Director </td>
+    </tr>
+  </thead>
+  <tbody >
+    <% @movies.each do |movie|%>
+    <tr>
+      <td> <%= movie.title%></td>
+      <% movie.users.each do |user|%>
+      <% if user.role == "actor"%>
+      <% @actor = user.name%>
+      <% elsif user.role == "producer"%>
+      <% @producer = user.name%>
+      <% else%>
+      <% @director = user.name%>
+      <% end %>
+      <%end%>
+      <td> <%= @actor%></td>
+      <td> <%= @producer%> </td>
+      <td> <%= @director%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<%= link_to 'back', new_user_path%>

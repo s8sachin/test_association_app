@@ -1,0 +1,23 @@
+<%= form_for :movie,url: movies_path do |f| %>
+ 
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :actor %><br />
+    <%= select_tag 'actor_id', options_for_select(@actors.collect{ |u| [u.name, u.id] }) %>
+  </div>
+  <div class="field">
+    <%= f.label :producer_id %><br />
+    <%= select_tag 'producer_id', options_for_select(@producers.collect{ |u| [u.name, u.id] }) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :director_id %><br />
+    <%= select_tag 'director_id', options_for_select(@directors.collect{ |u| [u.name, u.id] }) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
